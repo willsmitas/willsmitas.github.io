@@ -22,8 +22,12 @@ Modeled on a plain personal-site format: a big bold name, a small `home / cv`
 nav under it, a few short paragraphs, a hairline rule, and a contact sentence
 with inline links — with a polaroid-framed photo to the right of the text.
 
-Two columns above 50rem, centered in the viewport so the whole page fits on one
-screen without scrolling. `.slide img` carries `max-height: min(56vh, 24rem)` to
+Two columns above 50rem, anchored to the top of the viewport, and the whole
+page still fits on one screen without scrolling. Top-anchored rather than
+vertically centered so the name and nav sit at the same coordinates on the home
+and cv pages — `scrollbar-gutter: stable` on `html` keeps the horizontal
+position steady too, since the short home page would otherwise center about 8px
+differently from the scrolling cv page. `.slide img` carries `max-height: min(56vh, 24rem)` to
 hold that promise on short windows; the image crops rather than growing. Below
 50rem the grid collapses to a single stacked column and the page scrolls.
 

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img" aria-label="Placeholder image 5">
+  <rect width="1200" height="1500" fill="#F2E6D6"/>
+  <circle cx="740" cy="590" r="170" fill="#C9A48C" opacity="0.75"/>
+  <rect x="640" y="580" width="450" height="480" fill="#A9503C" opacity="0.18"/>
+  <path d="M0 1220 C 300 1078, 700 1138, 1200 1130 L1200 1500 L0 1500 Z" fill="#A9503C" opacity="0.10"/>
+  <text x="600" y="1400" text-anchor="middle" font-family="ui-sans-serif, Segoe UI, Helvetica, Arial, sans-serif" font-size="30" letter-spacing="8" fill="#2E2620" opacity="0.5">PLACEHOLDER 05</text>
+</svg>

@@ -1,0 +1,327 @@
+/* ---------------------------------------------------------------
+   Personal site. Two palettes, one layout. No frameworks.
+   Retune everything from the tokens below.
+   --------------------------------------------------------------- */
+
+:root {
+  --paper:      #FBF7EF;  /* page                          */
+  --sunk:       #F5EBD3;  /* image well                    */
+  --line:       #E4D9C6;  /* hairlines, rail base          */
+  --ink:        #241E19;  /* headings, body text           */
+  --soft:       #5F5348;  /* secondary text                */
+  --faint:      #9A8B7C;  /* tertiary text, idle icons     */
+  --clay:       #A9503C;  /* accent — muted brick red      */
+  --frame:      #FFFFFF;  /* polaroid stock                */
+  --frame-ink:  #6E6357;  /* handwriting on the polaroid   */
+  --shadow:     rgba(60, 44, 28, .16);
+
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+  --hand: "Ink Free", "Segoe Print", "Bradley Hand", "Snell Roundhand",
+          "Comic Sans MS", cursive;
+}
+
+:root { color-scheme: light; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:     #15120E;
+    --sunk:      #1D1915;
+    --line:      #302921;
+    --ink:       #EFE6D7;
+    --soft:      #B0A28F;
+    --faint:     #7B6E60;
+    --clay:      #D0805F;
+    --frame:     #DCD2C0;
+    --frame-ink: #5C5348;
+    --shadow:    rgba(0, 0, 0, .45);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper:     #15120E;
+  --sunk:      #1D1915;
+  --line:      #302921;
+  --ink:       #EFE6D7;
+  --soft:      #B0A28F;
+  --faint:     #7B6E60;
+  --clay:      #D0805F;
+  --frame:     #DCD2C0;
+  --frame-ink: #5C5348;
+  --shadow:    rgba(0, 0, 0, .45);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1.0625rem/1.65 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+button { font: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------- layout */
+
+/* Text left, photographs right, the pair centered in the viewport. */
+.page {
+  max-width: 64rem;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vh, 3rem) 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 30rem) minmax(0, auto);
+  align-content: center;
+  align-items: center;
+  column-gap: clamp(2rem, 6vw, 4rem);
+}
+
+/* ------------------------------------------------------------ text */
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1.05;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  margin-top: .85rem;
+  font-size: .9375rem;
+}
+
+.nav a {
+  color: var(--soft);
+  text-decoration: none;
+  transition: color .18s ease;
+}
+.nav a:hover { color: var(--clay); }
+
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bio { margin-top: 1.6rem; }
+.bio p { margin: 0 0 1em; }
+.bio p:last-child { margin-bottom: 0; }
+
+hr {
+  width: min(100%, 22rem);
+  height: 1px;
+  margin: 1.5rem 0;
+  border: 0;
+  background: var(--line);
+}
+
+.contact { margin: 0; }
+
+.contact a {
+  color: var(--clay);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--clay) 35%, transparent);
+  transition: border-color .18s ease;
+}
+.contact a:hover { border-bottom-color: var(--clay); }
+
+/* ----------------------------------------------------- theme toggle */
+
+.theme-toggle {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--faint);
+  cursor: pointer;
+  transition: color .18s ease;
+}
+.theme-toggle:hover { color: var(--ink); }
+
+/* The icon shows the theme the button switches to: moon in light, sun in dark. */
+.theme-toggle svg {
+  grid-area: 1 / 1;
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.theme-toggle .sun { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .moon { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .sun  { display: block; }
+}
+:root[data-theme="dark"] .theme-toggle .moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .sun  { display: block; }
+
+/* -------------------------------------------------------- carousel */
+
+.carousel {
+  min-width: 0;
+  justify-self: center;
+  width: min(21rem, 100%);
+}
+
+/* Polaroid: even border, deeper below, caption on the stock itself. */
+.frame {
+  background: var(--frame);
+  padding: 13px 13px 0;
+  box-shadow: 0 1px 2px var(--shadow), 0 10px 28px -12px var(--shadow);
+}
+
+.viewport {
+  overflow: hidden;
+  background: var(--sunk);
+  cursor: grab;
+  touch-action: pan-y;
+}
+.carousel.is-dragging .viewport { cursor: grabbing; }
+
+.track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  will-change: transform;
+  transition: transform .4s cubic-bezier(.22, .61, .36, 1);
+}
+.carousel.is-dragging .track { transition: none; }
+
+.slide { flex: 0 0 100%; min-width: 0; }
+
+.slide img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  /* Cropped, never tall enough to push the page past one screen. */
+  max-height: min(56vh, 24rem);
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.caption {
+  margin: 0;
+  padding: .8rem .4rem .95rem;
+  font-family: var(--hand);
+  font-size: .8125rem;
+  color: var(--frame-ink);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.carousel-foot {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .8rem;
+}
+
+/* Position indicator that doubles as a control. */
+.rail {
+  flex: 1;
+  display: flex;
+  gap: 2px;
+}
+
+.rail button {
+  flex: 1 1 0;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.rail button::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: var(--line);
+  transition: background-color .18s ease;
+}
+.rail button:hover::before { background: var(--faint); }
+.rail button[aria-selected="true"]::before { background: var(--clay); }
+
+.carousel-foot > button {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--faint);
+  cursor: pointer;
+  transition: color .18s ease;
+}
+.carousel-foot > button:hover { color: var(--ink); }
+.carousel-foot > button svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ------------------------------------------------------ responsive */
+
+/* Not enough width for two columns — stack, and let the page scroll. */
+@media (max-width: 50rem) {
+  .page {
+    display: block;
+    min-height: 0;
+    max-width: 32rem;
+    padding: clamp(2rem, 7vw, 3rem) 1.5rem 2.5rem;
+  }
+  .carousel { width: min(18rem, 100%); margin: 2rem auto 0; }
+  .slide img { max-height: none; }
+}
+
+/* Roomier hit targets where there is no mouse. */
+@media (pointer: coarse) {
+  .rail button { height: 20px; }
+  .carousel-foot > button { width: 2.25rem; height: 2.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+@media print {
+  .carousel-foot, .theme-toggle { display: none; }
+  body { background: #fff; color: #000; }
+}

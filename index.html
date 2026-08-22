@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>William Smitas</title>
+<meta name="description" content="Personal site of William Smitas.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:,">
+<script>
+  // Applied before first paint so a saved theme never flashes the wrong one.
+  try {
+    var t = localStorage.getItem('theme');
+    if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+  } catch (e) {}
+</script>
+</head>
+<body>
+
+<main class="page">
+
+  <div class="intro">
+
+    <!-- TODO: your name -->
+    <h1>William Smitas</h1>
+
+    <nav class="nav" aria-label="Pages">
+      <a href="index.html" aria-current="page">home</a>
+      <!-- TODO: drop resume.pdf next to index.html, or point this wherever it lives -->
+      <a href="resume.pdf">cv</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme">
+        <svg class="moon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M13.4 10.1A6 6 0 0 1 5.9 2.6 6.2 6.2 0 1 0 13.4 10.1z"/>
+        </svg>
+        <svg class="sun" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <circle cx="8" cy="8" r="3.1"/>
+          <path d="M8 1.2V3M8 13v1.8M1.2 8H3m10 0h1.8M3.34 3.34l1.27 1.27m6.78 6.78 1.27 1.27M12.66 3.34l-1.27 1.27m-6.78 6.78-1.27 1.27"/>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- TODO: replace with your bio -->
+    <div class="bio">
+      <p>Hey!</p>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.</p>
+
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur.</p>
+    </div>
+
+    <hr>
+
+    <p class="contact">Please feel free to reach me at
+      <a href="mailto:william_smitas@brown.edu">william_smitas@brown.edu</a> or on
+      <!-- TODO: your LinkedIn URL -->
+      <a href="https://www.linkedin.com/in/your-profile" rel="me noopener">linkedin</a>.</p>
+
+  </div>
+
+  <!--
+    Carousel in a polaroid frame. Swap the files in images/ or edit
+    src/alt/data-caption below. Add or remove <li class="slide"> items freely —
+    the rail is built from whatever is in the markup.
+  -->
+  <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Photographs">
+
+    <div class="frame">
+      <div class="viewport" data-viewport tabindex="0">
+        <ul class="track" data-track>
+          <li class="slide" data-caption="lorem ipsum">
+            <img src="images/placeholder-01.svg" alt="Placeholder image one" width="1200" height="900" draggable="false">
+          </li>
+          <li class="slide" data-caption="consectetur adipiscing">
+            <img src="images/placeholder-02.svg" alt="Placeholder image two" width="1200" height="900" draggable="false" loading="lazy">
+          </li>
+          <li class="slide" data-caption="sed do eiusmod">
+            <img src="images/placeholder-03.svg" alt="Placeholder image three" width="1200" height="900" draggable="false" loading="lazy">
+          </li>
+          <li class="slide" data-caption="ut labore et dolore">
+            <img src="images/placeholder-04.svg" alt="Placeholder image four" width="1200" height="900" draggable="false" loading="lazy">
+          </li>
+          <li class="slide" data-caption="ad minim veniam">
+            <img src="images/placeholder-05.svg" alt="Placeholder image five" width="1200" height="900" draggable="false" loading="lazy">
+          </li>
+          <li class="slide" data-caption="quis nostrud">
+            <img src="images/placeholder-06.svg" alt="Placeholder image six" width="1200" height="900" draggable="false" loading="lazy">
+          </li>
+        </ul>
+      </div>
+      <p class="caption" data-caption-out aria-live="polite"></p>
+    </div>
+
+    <div class="carousel-foot">
+      <button type="button" data-prev aria-label="Previous image">
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M10 2 4 8l6 6"/></svg>
+      </button>
+      <div class="rail" data-rail role="tablist" aria-label="Choose image"></div>
+      <button type="button" data-next aria-label="Next image">
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 2l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

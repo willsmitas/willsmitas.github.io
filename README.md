@@ -9,7 +9,9 @@ Open `index.html` in a browser, or serve the folder:
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | All page content. Every spot needing your input is marked `TODO`. |
+| `index.html` | Home page. Spots needing your input are marked `TODO`. |
+| `cv.html` | CV as HTML, with icon links to the PDF and LinkedIn. |
+| `resume.pdf` | The CV as a PDF, linked from the cv page. |
 | `styles.css` | Two palettes as custom properties, then layout and carousel. |
 | `script.js` | Carousel behavior and the theme toggle. |
 | `images/` | Placeholder slides — replace with your own photos. |
@@ -27,6 +29,21 @@ hold that promise on short windows; the image crops rather than growing. Below
 
 If your bio runs long enough to overflow a short window, trim it or narrow the
 first track in `.page`'s `grid-template-columns`.
+
+## Pages
+
+`index.html` is the one-screen home page; `cv.html` is the CV rendered as HTML.
+The `home` / `cv` nav appears on both, with `aria-current="page"` marking the
+one you are on. `<main>` carries the layout variant as a class — `page home`
+for the two-column home layout, `page cv` for the single-column document — so
+the two share `styles.css` without fighting each other.
+
+The CV page's two icon links sit top right: a document badge pointing at
+`resume.pdf`, and the LinkedIn mark. Both are inline SVG using `currentColor`,
+so they follow the theme.
+
+Keeping the CV in sync is manual — `cv.html` and `resume.pdf` are separate
+files. When you update the PDF, update the matching entries in `cv.html`.
 
 ## What to fill in
 

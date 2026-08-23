@@ -25,9 +25,17 @@ with inline links — with a polaroid-framed photo to the right of the text.
 Two columns above 50rem, anchored to the top of the viewport, and the whole
 page still fits on one screen without scrolling. Top-anchored rather than
 vertically centered so the name and nav sit at the same coordinates on the home
-and cv pages — `scrollbar-gutter: stable` on `html` keeps the horizontal
-position steady too, since the short home page would otherwise center about 8px
-differently from the scrolling cv page. `.slide img` carries `max-height: min(56vh, 24rem)` to
+and cv pages — `scrollbar-gutter: stable both-edges` on `html` keeps the
+horizontal position steady too, since the short home page would otherwise
+center about 8px differently from the scrolling cv page. `both-edges` rather
+than plain `stable` so the reserved strip is symmetric and the photo's right
+margin equals the text's left margin.
+
+The masthead sits in its own grid row, so the photo starts level with the bio
+rather than with the name. The photo is right-aligned in its column
+(`justify-self: end`) and capped at `min(54vh, 28rem)` tall — that cap is what
+keeps a short window on one screen, so raising the carousel's width means
+re-checking it. `.slide img` carries `max-height: min(56vh, 24rem)` to
 hold that promise on short windows; the image crops rather than growing. Below
 50rem the grid collapses to a single stacked column and the page scrolls.
 

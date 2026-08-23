@@ -58,8 +58,10 @@
 html {
   -webkit-text-size-adjust: 100%;
   /* Reserve the scrollbar gutter on every page, or the short home page centers
-     ~8px differently from the scrolling cv page and the name jumps sideways. */
-  scrollbar-gutter: stable;
+     ~8px differently from the scrolling cv page and the name jumps sideways.
+     both-edges keeps it symmetric, so the photo's right margin matches the
+     text's left margin. */
+  scrollbar-gutter: stable both-edges;
 }
 
 body {
@@ -99,7 +101,17 @@ button { font: inherit; }
   align-content: start;
   align-items: start;
   column-gap: clamp(2rem, 6vw, 4rem);
+  row-gap: 1.6rem;
 }
+
+/* The masthead owns row one alone, so the photo starts level with the bio
+   rather than with the name. */
+.home .masthead { grid-area: 1 / 1; }
+.home .intro    { grid-area: 2 / 1; }
+.home .carousel { grid-area: 2 / 2; }
+
+/* Row gap already provides the space under the masthead. */
+.home .bio { margin-top: 0; }
 
 /* ------------------------------------------------------------ text */
 
@@ -195,8 +207,8 @@ hr {
 
 .carousel {
   min-width: 0;
-  justify-self: center;
-  width: min(21rem, 100%);
+  justify-self: end;
+  width: min(26rem, 100%);
 }
 
 /* Polaroid: even border, deeper below, caption on the stock itself. */
@@ -232,7 +244,7 @@ hr {
      landscape shots to ribbons. */
   aspect-ratio: 1 / 1;
   /* Cropped, never tall enough to push the page past one screen. */
-  max-height: min(64vh, 28rem);
+  max-height: min(54vh, 28rem);
   object-fit: cover;
   user-select: none;
   -webkit-user-drag: none;
@@ -463,7 +475,8 @@ hr {
     display: block;
     min-height: 0;
   }
-  .carousel { width: min(18rem, 100%); margin: 2rem auto 0; }
+  .home .bio { margin-top: 1.6rem; }
+  .carousel { width: min(20rem, 100%); margin: 2rem auto 0; justify-self: center; }
   .slide img { max-height: none; }
 }
 

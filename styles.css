@@ -228,7 +228,9 @@ hr {
 
 .slide img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  /* Square: the set mixes portrait and landscape, and 4:5 cropped the
+     landscape shots to ribbons. */
+  aspect-ratio: 1 / 1;
   /* Cropped, never tall enough to push the page past one screen. */
   max-height: min(64vh, 28rem);
   object-fit: cover;

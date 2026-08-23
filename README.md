@@ -62,13 +62,21 @@ files. When you update the PDF, update the matching entries in `cv.html`.
 ## Adding your photos
 
 Put your images in `images/` and update each slide's `src`, `alt`, and
-`data-caption`. The caption is the handwriting on the polaroid, so keep it
-short and lowercase. Add or delete `<li class="slide">` items freely — the rail
-under the frame is built from whatever is in the markup.
+`data-caption`. The caption is the handwriting on the polaroid. Add or delete
+`<li class="slide">` items freely — the rail under the frame is built from
+whatever is in the markup.
 
-Slides are cropped to 4:5 portrait (`object-fit: cover`), so any aspect ratio
-works. Change `aspect-ratio` on `.slide img` in `styles.css` for a different
-shape.
+Slides are cropped square (`object-fit: cover`), so any aspect ratio works;
+the current set mixes portrait and landscape. Change `aspect-ratio` on
+`.slide img` in `styles.css` for a different shape.
+
+Source photos were resized to a 1100px short edge, saved at JPEG quality 82,
+and stripped of EXIF — which also drops the GPS coordinates phones embed. If
+you add more, do the same rather than committing camera originals; the ten
+here went from 40MB to 3MB.
+
+`data-shuffle` on the carousel element randomises the slide order on every
+page load. Remove the attribute to keep the markup order.
 Export at roughly 1600px wide; keep the first slide eager and leave
 `loading="lazy"` on the rest — the script drops lazy loading from the slides
 on either side of the current one as you move.
@@ -76,6 +84,7 @@ on either side of the current one as you move.
 ## Carousel controls
 
 - The rail under the frame: each segment is a button, current one in clay red
+- Order is reshuffled on each load (`data-shuffle`)
 - Chevrons flanking the rail
 - Left/Right arrow keys, Home, End (click or tab to the image first)
 - Click-drag with a mouse, swipe on touch; vertical swipes still scroll the page

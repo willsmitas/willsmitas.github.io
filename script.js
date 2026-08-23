@@ -19,6 +19,15 @@
 
     if (!slides.length) return;
 
+    // data-shuffle: a different order on every load.
+    if (root.hasAttribute('data-shuffle')) {
+      for (var i = slides.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var swap = slides[i]; slides[i] = slides[j]; slides[j] = swap;
+      }
+      slides.forEach(function (slide) { track.appendChild(slide); });
+    }
+
     var index = 0;
     var segments = [];
 

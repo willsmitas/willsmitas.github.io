@@ -10,8 +10,7 @@ Open `index.html` in a browser, or serve the folder:
 | File | Purpose |
 | --- | --- |
 | `index.html` | Home page. Spots needing your input are marked `TODO`. |
-| `cv.html` | CV as HTML, with icon links to the PDF and LinkedIn. |
-| `resume.pdf` | The CV as a PDF, linked from the cv page. |
+| _(taken down)_ | `cv.html` and `resume.pdf` were removed on 2026-08-27; recover them from git history when you want them back. |
 | `styles.css` | Two palettes as custom properties, then layout and carousel. |
 | `script.js` | Carousel behavior and the theme toggle. |
 | `images/` | Placeholder slides — replace with your own photos. |
@@ -44,11 +43,13 @@ first track in `.page`'s `grid-template-columns`.
 
 ## Pages
 
-`index.html` is the one-screen home page; `cv.html` is the CV rendered as HTML.
-The `home` / `cv` nav appears on both, with `aria-current="page"` marking the
-one you are on. `<main>` carries the layout variant as a class — `page home`
-for the two-column home layout, `page cv` for the single-column document — so
-the two share `styles.css` without fighting each other.
+`index.html` is the one-screen home page. `cv.html` (the CV rendered as HTML)
+and `resume.pdf` are currently taken down; the `.cv` styles remain in
+`styles.css` so restoring the page is just a matter of bringing the file back
+and re-adding the `home` / `cv` nav links. `<main>` carries the layout variant
+as a class — `page home` for the two-column home layout, `page cv` for the
+single-column document — so the two share `styles.css` without fighting each
+other.
 
 The CV page's two icon links sit top right: a document badge pointing at
 `resume.pdf`, and the LinkedIn mark. Both are inline SVG using `currentColor`,
